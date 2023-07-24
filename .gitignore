@@ -1,3 +1,5 @@
+**/Debug/*
+
 # Prerequisites
 *.d
 
@@ -50,3 +52,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Project Backups/Second-term_Smart_CAR_Parking__ \[Autosaved\].pdsprj
+Project Backups/Second-term_Smart_CAR_Parking__ \[20230724, 16-27-26\].pdsprj
