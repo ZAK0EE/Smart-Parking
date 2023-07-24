@@ -32,8 +32,8 @@
 
 /*=================Timer2======================*/
 void Timer2_init(void);
-void dus(int us);
-void dms(int ms);
+void Timer2_dus(int us);
+void Timer2_dms(int ms);
 
 
 
