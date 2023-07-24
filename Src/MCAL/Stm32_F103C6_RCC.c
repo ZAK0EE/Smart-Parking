@@ -58,7 +58,7 @@ uint32_t MCAL_RCC_GetSYS_CLKFreq(void)
 uint32_t MCAL_RCC_GetHCLKFreq(void)
 {
 	// Bits 7:4 HPRE: AHB pre-scaler
-	return (MCAL_RCC_GetSYS_CLKFreq() >> AHBPrescTable[(RCC->CFGR >> 4) & 0xF]); // The first shift is multiplication
+	return (MCAL_RCC_GetSYS_CLKFreq() >> AHBPrescTable[(RCC->CFGR >> 7) & 0xF]); // The first shift is multiplication
 }
 
 uint32_t MCAL_RCC_GetPCLK1Freq(void)

@@ -64,14 +64,14 @@
 
 #define AFIO_BASE						0x40010000UL
 
-#define USART1_BASE 						0X40013800UL
+#define USART1_BASE 					0X40013800UL
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 // Base addresses for APB1 Peripherals
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
-#define USART2_BASE         			0x40014400UL
-#define USART3_BASE						0x40014800UL
+#define USART2_BASE         			0x40004400UL
+#define USART3_BASE						0x40004800UL
 
 // NVIC ( Non-Vectored Interrupt Controller )
 
