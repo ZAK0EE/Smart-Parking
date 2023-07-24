@@ -6,13 +6,14 @@
 #include "MCAL/Stm32_F103C6_EXTI.h"
 #include "MCAL/Stm32_F103C6_GPIO.h"
 #include "MCAL/Stm32_F103C6_USART.h"
+#include "MCAL/Stm32_F103C6_Timer.h"
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
 	RCC_GPIOA_CLK_EN();
 	RCC_GPIOB_CLK_EN();
 	RCC_AFIO_CLK_EN();
-
+	Timer2_init();
 
 }
 
@@ -30,6 +31,7 @@ uint16_t ch2 = '6';
 void x(void)
 {
 	MCAL_UART_ReceiveData(USART1, &ch, disable);
+	Timer2_dms(5000);
 	MCAL_UART_SendData(USART1, &ch, enable);
 
 }
