@@ -12,9 +12,9 @@
 /* =========================== Includes =========================== */
 /* ================================================================ */
 
-#include "stm32f103x6.h"
-#include "Stm32_F103C6_GPIO.h"
-#include "Stm32_F103C6_RCC.h"
+#include "MCAL/stm32f103x6.h"
+#include "MCAL/Stm32_F103C6_GPIO.h"
+#include "MCAL/Stm32_F103C6_RCC.h"
 
 /* ================================================================ */
 /* ============= User type definitions (structures) =============== */

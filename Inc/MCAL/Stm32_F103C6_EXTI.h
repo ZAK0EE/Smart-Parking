@@ -9,8 +9,8 @@
 #define INC_STM32_F103C6_EXTI_H_
 
 // includes
-#include "Stm32_F103C6_GPIO.h"
-#include "stm32f103x6.h"
+#include "MCAL/Stm32_F103C6_GPIO.h"
+#include "MCAL/stm32f103x6.h"
 
 // typedefs
 typedef struct

@@ -8,8 +8,8 @@
 #ifndef INC_STM32_F103C6_RCC_H_
 #define INC_STM32_F103C6_RCC_H_
 
-#include "stm32f103x6.h"
-#include "Stm32_F103C6_GPIO.h"
+#include "MCAL/stm32f103x6.h"
+#include "MCAL/Stm32_F103C6_GPIO.h"
 
 #define HSE_CLK 		(uint32_t)16000000
 #define HSI_RC_CLK 		(uint32_t)8000000

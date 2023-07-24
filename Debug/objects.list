@@ -1,0 +1,8 @@
+"Src/MCAL/Stm32_F103C6_EXTI.o"
+"Src/MCAL/Stm32_F103C6_GPIO.o"
+"Src/MCAL/Stm32_F103C6_RCC.o"
+"Src/MCAL/Stm32_F103C6_USART.o"
+"Src/main.o"
+"Src/syscalls.o"
+"Src/sysmem.o"
+"Startup/startup_stm32f103c6tx.o"
