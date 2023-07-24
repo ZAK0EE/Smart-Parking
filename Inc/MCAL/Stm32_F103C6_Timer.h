@@ -31,9 +31,9 @@
 
 
 /*=================Timer2======================*/
-void Timer2_init(void);
-void Timer2_dus(int us);
-void Timer2_dms(int ms);
+void MCAL_Timer2_init(void);
+void MCAL_Timer2_dus(int us);
+void MCAL_Timer2_dms(int ms);
 
 
 

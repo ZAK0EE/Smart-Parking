@@ -13,7 +13,7 @@ void clock_init()
 	RCC_GPIOA_CLK_EN();
 	RCC_GPIOB_CLK_EN();
 	RCC_AFIO_CLK_EN();
-	Timer2_init();
+	MCAL_Timer2_init();
 
 }
 
@@ -31,7 +31,7 @@ uint16_t ch2 = '6';
 void x(void)
 {
 	MCAL_UART_ReceiveData(USART1, &ch, disable);
-	Timer2_dms(5000);
+	MCAL_Timer2_dms(5000);
 	MCAL_UART_SendData(USART1, &ch, enable);
 
 }

@@ -9,7 +9,7 @@
 #include "MCAL/Stm32_F103C6_Timer.h"
 
 
-void Timer2_init(void)
+void MCAL_Timer2_init(void)
 {
 	RCC_APB1ENR |=(1<<0);     //Enable RCC for tim2
 	TIM2_PSC = 7;             //Clk_input=(8M/(7+1))=1MHZ
@@ -18,18 +18,18 @@ void Timer2_init(void)
 	while(!(TIM2_SR)&(1<<0));
 }
 
-void Timer2_dus(int us)
+void MCAL_Timer2_dus(int us)
 {
 	TIM2_CNT=0;
 	while(TIM2_CNT<us);
 }
 
-void Timer2_dms(int ms)
+void MCAL_Timer2_dms(int ms)
 {
 	int i=0;
 	for(i=0;i<ms;i++)
 	{
-		Timer2_dus(1000);
+		MCAL_Timer2_dus(1000);
 	}
 }
 
