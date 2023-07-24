@@ -2,7 +2,7 @@
  * Stm32_F103C6_USART.c
  *
  *  Created on: Aug 23, 2022
- *      Author: Ziad
+ *      Author: Ziad Gamalelden
  */
 
 #include "MCAL/Stm32_F103C6_USART.h"

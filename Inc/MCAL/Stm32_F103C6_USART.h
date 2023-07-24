@@ -2,7 +2,7 @@
  * Stm32_F103C6_USART.h
  *
  *  Created on: Aug 23, 2022
- *      Author: Ziad
+ *      Author: Ziad Gamalelden
  */
 
 #ifndef INC_STM32_F103C6_USART_H_

@@ -2,7 +2,7 @@
  * Stm32_F103C6_RCC.h
  *
  *  Created on: Aug 20, 2022
- *      Author: VGA
+ *      Author: Ziad Gamalelden
  */
 
 #ifndef INC_STM32_F103C6_RCC_H_
