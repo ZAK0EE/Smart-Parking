@@ -3,6 +3,7 @@
  *
  *  Created on: Nov 12, 2021
  *  Author: Mostafa Mahmoud Elshiekh
+ *  Modified: Ziad Gamalelden
  */
 
 #ifndef HAL_SERVO_MOTOR_H_
