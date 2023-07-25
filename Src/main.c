@@ -9,7 +9,9 @@
 #include "MCAL/Stm32_F103C6_Timer.h"
 #include "HAL/LCD.h"
 #include "HAL/Keypad.h"
-#include "hal/Servo_Motor.h"
+#include "HAL/Servo_Motor.h"
+#include "HAL/PIR.h"
+
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
@@ -25,7 +27,7 @@ void clock_init()
 	KPAD_init();
 	Servo1_Entry_Gate_Init();
 	Servo2_Exit_Gate_Init();
-
+	PIR_init();
 
 
 
@@ -45,15 +47,18 @@ uint16_t ch2 = '6';
 void x(void)
 {
 	MCAL_UART_ReceiveData(USART1, &ch, disable);
-	//MCAL_Timer2_dms(5000);
-	LCD_clearscreen(&LCD_admin);
-	LCD_sendstring(&LCD_admin, (char*)"Welcome bro");
-	LCD_gotoxy(&LCD_admin, 0, 1);
-	LCD_sendstring(&LCD_admin, (char*)"Name: ");
-	LCD_gotoxy(&LCD_admin, 0, 2);
-	LCD_sendstring(&LCD_admin, (char*)"Age: ");
-	LCD_gotoxy(&LCD_admin, 0, 3);
-	LCD_sendstring(&LCD_admin, (char*)"Degree: ");
+	if(ch == '1')
+	{
+		Servo1_Entry_Gate(SERVO_UP);
+	}
+	else if(ch == '0')
+	{
+		if(PIR_exit() == PIR_NOT_DETECTED)
+		{
+			Servo1_Entry_Gate(SERVO_DOWN);
+
+		}
+	}
 
 	MCAL_UART_SendData(USART1, &ch, enable);
 
@@ -81,7 +86,7 @@ int main(void)
 	USART_Config_t uart_config;
 	uart_config.BaudRate = UART_BaudRate_115200;
 	uart_config.HwFlowCtl = UART_HwFlowCtl_NONE;
-	uart_config.IRQ_Enable = UART_IRQ_Enable_NONE;
+	uart_config.IRQ_Enable = UART_IRQ_Enable_RXNEIE;
 	uart_config.P_IRQ_CallBack = x;
 	uart_config.Parity = UART_Parity_NONE;
 	uart_config.Payload_Length = UART_Payload_Length_8B;
@@ -108,23 +113,7 @@ int main(void)
 	char x = 0;
 	while(1)
 	{
-		do
-		{
-			x = KPAD_Get_Char();
-		}
-		while(x == 0);
-		if(x == '5')
-		{
-			Servo1_Entry_Gate(SERVO_UP);
-		}
-		else if(x == '3')
-		{
-			Servo1_Entry_Gate(SERVO_DOWN);
 
-		}
-		LCD_sendchar(&LCD_admin, x, DATA);
-
-		//MCAL_UART_SendData(USART2, (uint16_t*)&x, enable);
 
 	}
 
