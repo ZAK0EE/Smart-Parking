@@ -65,6 +65,9 @@ typedef enum {
 	COMMAND,
 	DATA
 }e_LCDCharType_t;
+
+s_LCD_Config_t LCD_admin, LCD_entry;
+
 // used to initialize the LCD , the config must be done first
 void LCD_init(s_LCD_Config_t  *  LCD );
 //displaying character or sending command

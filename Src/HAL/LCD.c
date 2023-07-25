@@ -3,9 +3,30 @@
  *
  * Created: 6/30/2021 8:56:53 PM
  *  Author: Mostafa El-Flall
+ *
+ * Modified: 22/07/31 10:01:55 AM
+ *  Author: Ziad Gamalelden
  */
 
 #include "HAL/LCD.h"
+
+s_LCD_Config_t LCD_admin={
+		.s_LCDCtrlPins = {GPIOB, GPIO_PIN_11, GPIO_PIN_10},
+		.s_LCDDataPins = {GPIOB, GPIO_PIN_12},
+		.e_EntryMode = NOSHIFT_DECREMENT,
+		.e_DispCtrl = ONDISP_BLINKCURSOR,
+		.e_OperMode = FOURBIT_2LINE_10DOT,
+
+};
+
+s_LCD_Config_t LCD_entry={
+		.s_LCDCtrlPins = {GPIOA, GPIO_PIN_5, GPIO_PIN_6},
+		.s_LCDDataPins = {GPIOA, GPIO_PIN_12},
+		.e_EntryMode = NOSHIFT_DECREMENT,
+		.e_DispCtrl = ONDISP_OFFCURSOR,
+		.e_OperMode = FOURBIT_2LINE_10DOT,
+
+};
 
 #define BITSET(reg,bit) (reg |=(1<< bit))
 #define BITCLEAR(reg,bit) (reg &= ~(1<<bit))
