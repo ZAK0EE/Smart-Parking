@@ -1,7 +1,10 @@
 /*
  * HAL_LCD.h
  *
- * Created: 22/07/31 10:01:55 AM
+ * Created: 6/30/2021 8:56:53 PM
+ *  Author: Mostafa El-Flall
+ *
+ * Modified: 22/07/31 10:01:55 AM
  *  Author: Ziad Gamalelden
  */
 

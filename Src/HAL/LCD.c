@@ -148,21 +148,21 @@ void LCD_returnhome(s_LCD_Config_t  * LCD)
 void LCD_gotoxy(s_LCD_Config_t  * LCD , unsigned char x , unsigned char y)
 {
 	uint32_t address;
-	switch(y)
-	{
-	case 0:
-		address = x;
-		break;
-	case 1:
-		address = 0x40+x;
-		break;
-	case 2:
-		address = 0x14+x;
-		break;
-	case 3:
-		address = 0x54+x;
-		break;
-	}
+    switch (y)
+    {
+    case 0:
+        address = x;
+        break;
+    case 1:
+        address = 0x40 + x;
+        break;
+    case 2:
+        address = 0x10 + x; // For line 3, use 0x10 to 0x1F addresses
+        break;
+    case 3:
+        address = 0x50 + x; // For line 4, use 0x50 to 0x5F addresses
+        break;
+    }
 	LCD->Ch_Counter=y*LINE_DIGITS+x;
 	LCD_sendchar(LCD,SET_DD_ADDRESS+address,COMMAND);
 }
