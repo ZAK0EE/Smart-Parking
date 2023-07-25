@@ -8,7 +8,7 @@
 #include "MCAL/Stm32_F103C6_USART.h"
 #include "MCAL/Stm32_F103C6_Timer.h"
 #include "HAL/LCD.h"
-
+#include "HAL/Keypad.h"
 
 void clock_init()
 {
@@ -19,9 +19,10 @@ void clock_init()
 	MCAL_Timer2_init();
 
 
-
 	LCD_init(&LCD_admin);
 	LCD_init(&LCD_entry);
+
+	KPAD_init();
 
 
 
@@ -67,7 +68,8 @@ void yfunc(void)
 	LCD_sendstring(&LCD_entry, (char*)"Age: ");
 	LCD_gotoxy(&LCD_entry, 0, 3);
 	LCD_sendstring(&LCD_entry, (char*)"Degree: ");
-	MCAL_UART_SendData(USART2, &ch2, enable);
+
+	MCAL_UART_SendData(USART2, (uint16_t*)&x, enable);
 
 }
 int main(void)
@@ -77,7 +79,7 @@ int main(void)
 	USART_Config_t uart_config;
 	uart_config.BaudRate = UART_BaudRate_115200;
 	uart_config.HwFlowCtl = UART_HwFlowCtl_NONE;
-	uart_config.IRQ_Enable = UART_IRQ_Enable_RXNEIE;
+	uart_config.IRQ_Enable = UART_IRQ_Enable_NONE;
 	uart_config.P_IRQ_CallBack = x;
 	uart_config.Parity = UART_Parity_NONE;
 	uart_config.Payload_Length = UART_Payload_Length_8B;
@@ -91,7 +93,7 @@ int main(void)
 
 	uart2CFG.BaudRate = UART_BaudRate_115200;
 	uart2CFG.HwFlowCtl = UART_HwFlowCtl_NONE;
-	uart2CFG.IRQ_Enable = UART_IRQ_Enable_RXNEIE;
+	uart2CFG.IRQ_Enable = UART_IRQ_Enable_NONE;
 	uart2CFG.P_IRQ_CallBack = yfunc;
 	uart2CFG.Parity = UART_Parity_NONE;
 	uart2CFG.Payload_Length = UART_Payload_Length_8B;
@@ -101,12 +103,19 @@ int main(void)
 	MCAL_UART_GPIO_Set_Pins(USART2);
 
 
-
+	char x = 0;
 	while(1)
 	{
-		//MCAL_UART_ReceiveData(USART2, &ch2, disable);
+		do
+		{
+			x = KPAD_Get_Char();
+		}
+		while(x == 0);
 
-	//	MCAL_UART_SendData(USART2, &ch2, enable);
+		LCD_sendchar(&LCD_admin, x, DATA);
+
+		//MCAL_UART_SendData(USART2, (uint16_t*)&x, enable);
+
 	}
 
 }
