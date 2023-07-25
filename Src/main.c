@@ -7,6 +7,11 @@
 #include "MCAL/Stm32_F103C6_GPIO.h"
 #include "MCAL/Stm32_F103C6_USART.h"
 #include "MCAL/Stm32_F103C6_Timer.h"
+#include "HAL/LCD.h"
+#include "HAL/Keypad.h"
+#include "HAL/Servo_Motor.h"
+#include "HAL/PIR.h"
+
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
@@ -14,6 +19,17 @@ void clock_init()
 	RCC_GPIOB_CLK_EN();
 	RCC_AFIO_CLK_EN();
 	MCAL_Timer2_init();
+
+
+	LCD_init(&LCD_admin);
+	LCD_init(&LCD_entry);
+
+	KPAD_init();
+	Servo1_Entry_Gate_Init();
+	Servo2_Exit_Gate_Init();
+	PIR_init();
+
+
 
 }
 
@@ -31,7 +47,19 @@ uint16_t ch2 = '6';
 void x(void)
 {
 	MCAL_UART_ReceiveData(USART1, &ch, disable);
-	MCAL_Timer2_dms(5000);
+	if(ch == '1')
+	{
+		Servo1_Entry_Gate(SERVO_UP);
+	}
+	else if(ch == '0')
+	{
+		if(PIR_exit() == PIR_NOT_DETECTED)
+		{
+			Servo1_Entry_Gate(SERVO_DOWN);
+
+		}
+	}
+
 	MCAL_UART_SendData(USART1, &ch, enable);
 
 }
@@ -39,8 +67,16 @@ void x(void)
 void yfunc(void)
 {
 	MCAL_UART_ReceiveData(USART2, &ch2, disable);
+	LCD_clearscreen(&LCD_entry);
+	LCD_sendstring(&LCD_entry, (char*)"Welcome bro");
+	LCD_gotoxy(&LCD_entry, 0, 1);
+	LCD_sendstring(&LCD_entry, (char*)"Name: ");
+	LCD_gotoxy(&LCD_entry, 0, 2);
+	LCD_sendstring(&LCD_entry, (char*)"Age: ");
+	LCD_gotoxy(&LCD_entry, 0, 3);
+	LCD_sendstring(&LCD_entry, (char*)"Degree: ");
 
-	MCAL_UART_SendData(USART2, &ch2, enable);
+	MCAL_UART_SendData(USART2, (uint16_t*)&x, enable);
 
 }
 int main(void)
@@ -64,7 +100,7 @@ int main(void)
 
 	uart2CFG.BaudRate = UART_BaudRate_115200;
 	uart2CFG.HwFlowCtl = UART_HwFlowCtl_NONE;
-	uart2CFG.IRQ_Enable = UART_IRQ_Enable_RXNEIE;
+	uart2CFG.IRQ_Enable = UART_IRQ_Enable_NONE;
 	uart2CFG.P_IRQ_CallBack = yfunc;
 	uart2CFG.Parity = UART_Parity_NONE;
 	uart2CFG.Payload_Length = UART_Payload_Length_8B;
@@ -74,12 +110,11 @@ int main(void)
 	MCAL_UART_GPIO_Set_Pins(USART2);
 
 
-
+	char x = 0;
 	while(1)
 	{
-		//MCAL_UART_ReceiveData(USART2, &ch2, disable);
 
-	//	MCAL_UART_SendData(USART2, &ch2, enable);
+
 	}
 
 }

@@ -276,7 +276,20 @@ uint8_t MCAL_GPIO_LockPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN_x)
 	}
 	else
 		return GPIO_RETURN_ERROR;
+}
 
-
-
+/**=================================================================
+ * @Fn -                    - MCAL_GPIO_WriteGroup
+ * @brief -                 -Write on specific portion of the port
+ * @param [in] -            -GPIOx : where x can be (A..E depending on device used)
+ * @param [in] -            -Vlaue to write on this port
+ * @param [in] -            -Mask : bit with 1 will be affected , bits with 0 won't be affected
+ * @retval -                -none
+ * note -                   -none
+ */
+/**================================================================= */
+void MCAL_GPIO_WriteGroup(GPIO_TypeDef * GPIOx,uint16_t Value,uint16_t Mask)
+{
+	GPIOx->ODR &= ~(Mask);				// clear the group
+	GPIOx->ODR |= (Value & Mask);		// put the new value
 }
