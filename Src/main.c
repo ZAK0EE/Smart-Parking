@@ -9,7 +9,7 @@
 #include "MCAL/Stm32_F103C6_Timer.h"
 #include "HAL/LCD.h"
 #include "HAL/Keypad.h"
-
+#include "hal/Servo_Motor.h"
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
@@ -23,6 +23,8 @@ void clock_init()
 	LCD_init(&LCD_entry);
 
 	KPAD_init();
+	Servo1_Entry_Gate_Init();
+	Servo2_Exit_Gate_Init();
 
 
 
@@ -111,7 +113,15 @@ int main(void)
 			x = KPAD_Get_Char();
 		}
 		while(x == 0);
+		if(x == '5')
+		{
+			Servo1_Entry_Gate(SERVO_UP);
+		}
+		else if(x == '3')
+		{
+			Servo1_Entry_Gate(SERVO_DOWN);
 
+		}
 		LCD_sendchar(&LCD_admin, x, DATA);
 
 		//MCAL_UART_SendData(USART2, (uint16_t*)&x, enable);
