@@ -7,6 +7,16 @@
 #include "MCAL/Stm32_F103C6_GPIO.h"
 #include "MCAL/Stm32_F103C6_USART.h"
 #include "MCAL/Stm32_F103C6_Timer.h"
+#include "HAL/LCD.h"
+
+	s_LCD_Config_t LCD={
+			.s_LCDCtrlPins = {GPIOB, GPIO_PIN_11, GPIO_PIN_10},
+			.s_LCDDataPins = {GPIOB, GPIO_PIN_12},
+			.e_EntryMode = NOSHIFT_DECREMENT,
+			.e_DispCtrl = ONDISP_ONCURSOR,
+			.e_OperMode = FOURBIT_2LINE_10DOT,
+
+	};
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
@@ -14,6 +24,13 @@ void clock_init()
 	RCC_GPIOB_CLK_EN();
 	RCC_AFIO_CLK_EN();
 	MCAL_Timer2_init();
+
+
+
+	LCD_init(&LCD);
+
+
+
 
 }
 
@@ -31,7 +48,15 @@ uint16_t ch2 = '6';
 void x(void)
 {
 	MCAL_UART_ReceiveData(USART1, &ch, disable);
-	MCAL_Timer2_dms(5000);
+	//MCAL_Timer2_dms(5000);
+	LCD_clearscreen(&LCD);
+	LCD_sendstring(&LCD, (char*)"Welcome bro");
+	LCD_gotoxy(&LCD, 0, 1);
+	LCD_sendstring(&LCD, (char*)"Name: ");
+	LCD_gotoxy(&LCD, 0, 2);
+	LCD_sendstring(&LCD, (char*)"Age: ");
+	LCD_gotoxy(&LCD, 0, 3);
+	LCD_sendstring(&LCD, (char*)"Degree: ");
 	MCAL_UART_SendData(USART1, &ch, enable);
 
 }
