@@ -125,6 +125,8 @@ void MCAL_GPIO_WritePort(GPIO_TypeDef* GPIOx, uint16_t Value);
 void MCAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN_x);
 void MCAL_GPIO_TogglePort(GPIO_TypeDef* GPIOx);
 
+void MCAL_GPIO_WriteGroup(GPIO_TypeDef * GPIOx, uint16_t Vlaue, uint16_t mask);
+
 uint8_t MCAL_GPIO_LockPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_PIN_x);
 
 #endif /* STM32_F103C6_GPIO_H_ */
