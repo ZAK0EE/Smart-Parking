@@ -9,14 +9,7 @@
 #include "MCAL/Stm32_F103C6_Timer.h"
 #include "HAL/LCD.h"
 
-	s_LCD_Config_t LCD={
-			.s_LCDCtrlPins = {GPIOB, GPIO_PIN_11, GPIO_PIN_10},
-			.s_LCDDataPins = {GPIOB, GPIO_PIN_12},
-			.e_EntryMode = NOSHIFT_DECREMENT,
-			.e_DispCtrl = ONDISP_ONCURSOR,
-			.e_OperMode = FOURBIT_2LINE_10DOT,
 
-	};
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
@@ -27,7 +20,8 @@ void clock_init()
 
 
 
-	LCD_init(&LCD);
+	LCD_init(&LCD_admin);
+	LCD_init(&LCD_entry);
 
 
 
@@ -49,14 +43,15 @@ void x(void)
 {
 	MCAL_UART_ReceiveData(USART1, &ch, disable);
 	//MCAL_Timer2_dms(5000);
-	LCD_clearscreen(&LCD);
-	LCD_sendstring(&LCD, (char*)"Welcome bro");
-	LCD_gotoxy(&LCD, 0, 1);
-	LCD_sendstring(&LCD, (char*)"Name: ");
-	LCD_gotoxy(&LCD, 0, 2);
-	LCD_sendstring(&LCD, (char*)"Age: ");
-	LCD_gotoxy(&LCD, 0, 3);
-	LCD_sendstring(&LCD, (char*)"Degree: ");
+	LCD_clearscreen(&LCD_admin);
+	LCD_sendstring(&LCD_admin, (char*)"Welcome bro");
+	LCD_gotoxy(&LCD_admin, 0, 1);
+	LCD_sendstring(&LCD_admin, (char*)"Name: ");
+	LCD_gotoxy(&LCD_admin, 0, 2);
+	LCD_sendstring(&LCD_admin, (char*)"Age: ");
+	LCD_gotoxy(&LCD_admin, 0, 3);
+	LCD_sendstring(&LCD_admin, (char*)"Degree: ");
+
 	MCAL_UART_SendData(USART1, &ch, enable);
 
 }
@@ -64,7 +59,14 @@ void x(void)
 void yfunc(void)
 {
 	MCAL_UART_ReceiveData(USART2, &ch2, disable);
-
+	LCD_clearscreen(&LCD_entry);
+	LCD_sendstring(&LCD_entry, (char*)"Welcome bro");
+	LCD_gotoxy(&LCD_entry, 0, 1);
+	LCD_sendstring(&LCD_entry, (char*)"Name: ");
+	LCD_gotoxy(&LCD_entry, 0, 2);
+	LCD_sendstring(&LCD_entry, (char*)"Age: ");
+	LCD_gotoxy(&LCD_entry, 0, 3);
+	LCD_sendstring(&LCD_entry, (char*)"Degree: ");
 	MCAL_UART_SendData(USART2, &ch2, enable);
 
 }
