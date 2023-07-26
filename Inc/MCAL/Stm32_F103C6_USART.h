@@ -131,6 +131,8 @@ void MCAL_UART_GPIO_Set_Pins(USART_Typedef* USARTx);
 void MCAL_UART_SendData(USART_Typedef* USARTx, uint16_t* pTxBuffer, enum Polling_Mechanism PollingEn);
 void MCAL_UART_ReceiveData(USART_Typedef* USARTx, uint16_t* pRxBuffer, enum Polling_Mechanism PollingEn);
 
+uint8_t MCAL_UART_IsDataAvailable(USART_Typedef* USARTx);
+
 void MCAL_UART_WAIT_TC(USART_Typedef* USARTx);
 
 // TODO MCAL_USART_LIN_Init()	// LIN
