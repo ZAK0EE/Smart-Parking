@@ -18,3 +18,8 @@
 
 #define ALARM_NUM_BLINKS 6
 void Alarm_init();
+
+void Alarm_correctID_on(void);
+void Alarm_correctID_off(void);
+void Alarm_correctID_blink(void);
+
