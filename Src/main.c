@@ -3,7 +3,6 @@
 // Mastering_Embedded System online diploma
 
 #include "MCAL/stm32f103x6.h"
-#include "MCAL/Stm32_F103C6_EXTI.h"
 #include "MCAL/Stm32_F103C6_GPIO.h"
 #include "MCAL/Stm32_F103C6_USART.h"
 #include "MCAL/Stm32_F103C6_Timer.h"
