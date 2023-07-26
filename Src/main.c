@@ -7,7 +7,7 @@
 #include "MCAL/Stm32_F103C6_USART.h"
 #include "MCAL/Stm32_F103C6_Timer.h"
 #include "HAL/LCD.h"
-#include "HAL/Keypad.h"
+#include "HAL/KPAD.h"
 #include "HAL/Servo_Motor.h"
 #include "HAL/PIR.h"
 #include "HAL/Alarm.h"
