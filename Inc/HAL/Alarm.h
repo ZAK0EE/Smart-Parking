@@ -23,3 +23,11 @@ void Alarm_correctID_on(void);
 void Alarm_correctID_off(void);
 void Alarm_correctID_blink(void);
 
+void Alarm_wrongID_on(void);
+void Alarm_wrongID_off(void);
+void Alarm_wrongID_blink(void);
+
+
+
+
+#endif /* HAL_ALARM_H_ */
