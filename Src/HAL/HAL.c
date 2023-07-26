@@ -10,6 +10,8 @@
 #include "HAL/PIR.h"
 #include "HAL/Servo_Motor.h"
 #include "HAL/LCD.h"
+#include "HAL/RFID.h"
+
 void HAL_init(void)
 {
 	Alarm_init();
@@ -21,4 +23,7 @@ void HAL_init(void)
 
 	LCD_init(&LCD_admin);
 	LCD_init(&LCD_user);
+
+	RFID_init();
+
 }
