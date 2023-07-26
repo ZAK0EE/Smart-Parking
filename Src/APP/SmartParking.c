@@ -2,7 +2,7 @@
  * Smart Parking.c
  *
  *  Created on: Jul 26, 2023
- *      Author: Ziad Gamalelden
+ *  Author: Ziad Gamalelden
  */
 #include <stdio.h>
 
@@ -54,6 +54,29 @@ void SmartParking_init(void)
 	}
 
 
+}
+
+/**
+ * @brief Checks if the provided ID is authentic for accessing the parking area.
+ *
+ * This function verifies whether the given ID is authentic and allowed to access the parking area.
+ * It checks the ID against a list of authentic IDs stored in the system.
+ *
+ * @param id The ID to be checked for authenticity.
+ * @return 1 if the ID is authentic and allowed access, 0 otherwise.
+ */
+uint8_t SmartParking_isAuthentic(uint8_t id)
+{
+	uint8_t isAuthentic = 0;
+	for(int i = 0; i < 3; i++)
+	{
+		if(id == AuthenticIDs[i])
+		{
+			isAuthentic = 1;
+		}
+	}
+
+	return isAuthentic;
 }
 void SmartParking_main(void)
 {
