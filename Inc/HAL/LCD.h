@@ -145,7 +145,7 @@ extern s_LCD_Config_t LCD_admin;
  * @note You must not edit this variable.
  *
  */
-extern s_LCD_Config_t LCD_entry;
+extern s_LCD_Config_t LCD_user;
 
 /**
  * @brief Initialize the LCD module.

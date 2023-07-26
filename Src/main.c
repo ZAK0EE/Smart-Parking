@@ -21,7 +21,7 @@ void clock_init()
 
 
 	LCD_init(&LCD_admin);
-	LCD_init(&LCD_entry);
+	LCD_init(&LCD_user);
 
 	KPAD_init();
 	Servo1_Entry_Gate_Init();
@@ -76,14 +76,14 @@ void x(void)
 void yfunc(void)
 {
 	MCAL_UART_ReceiveData(USART2, &ch2, disable);
-	LCD_clearscreen(&LCD_entry);
-	LCD_sendstring(&LCD_entry, (char*)"Welcome bro");
-	LCD_gotoxy(&LCD_entry, 0, 1);
-	LCD_sendstring(&LCD_entry, (char*)"Name: ");
-	LCD_gotoxy(&LCD_entry, 0, 2);
-	LCD_sendstring(&LCD_entry, (char*)"Age: ");
-	LCD_gotoxy(&LCD_entry, 0, 3);
-	LCD_sendstring(&LCD_entry, (char*)"Degree: ");
+	LCD_clearscreen(&LCD_user);
+	LCD_sendstring(&LCD_user, (char*)"Welcome bro");
+	LCD_gotoxy(&LCD_user, 0, 1);
+	LCD_sendstring(&LCD_user, (char*)"Name: ");
+	LCD_gotoxy(&LCD_user, 0, 2);
+	LCD_sendstring(&LCD_user, (char*)"Age: ");
+	LCD_gotoxy(&LCD_user, 0, 3);
+	LCD_sendstring(&LCD_user, (char*)"Degree: ");
 
 	MCAL_UART_SendData(USART2, (uint16_t*)&x, enable);
 
