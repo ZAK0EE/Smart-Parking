@@ -47,6 +47,11 @@ uint16_t RFID_entry_Read(void)
 	return entryId;
 }
 
+uint8_t RFID_entry_isavailable(void)
+{
+	return MCAL_UART_IsDataAvailable(RFID_ENTRY);
+}
+
 uint16_t RFID_exit_Read(void)
 {
 	uint16_t exitId = 0;
@@ -54,3 +59,9 @@ uint16_t RFID_exit_Read(void)
 
 	return exitId;
 }
+
+uint8_t RFID_exit_isavailable(void)
+{
+	return MCAL_UART_IsDataAvailable(RFID_EXIT);
+}
+
