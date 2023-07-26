@@ -1,11 +1,10 @@
-/*
- * HAL_LCD.h
- *
- * Created: 6/30/2021 8:56:53 PM
- *  Author: Mostafa El-Flall
- *
- * Modified: 22/07/31 10:01:55 AM
- *  Author: Ziad Gamalelden
+/**
+ * @file HAL_LCD.h
+ * @brief LCD (Liquid Crystal Display) Hardware Abstraction Layer header file.
+ * @date July 31, 2022
+ * @author Mostafa El-Flall
+ * @modified July 31, 2022
+ * @modifier Ziad Gamalelden
  */
 
 #ifndef LCD_H_
@@ -145,7 +144,7 @@ extern s_LCD_Config_t LCD_admin;
  * @note You must not edit this variable.
  *
  */
-extern s_LCD_Config_t LCD_entry;
+extern s_LCD_Config_t LCD_user;
 
 /**
  * @brief Initialize the LCD module.

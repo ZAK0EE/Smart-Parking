@@ -1,8 +1,8 @@
-/*
- * stm32f103x8.h
- *
- *  Created on: Jul 27, 2022
- *      Author: Ziad Gamalelden
+/**
+ * @file stm32f103x8.h
+ * @brief STM32F103x8 Register Definitions and Macros.
+ * @date July 27, 2022
+ * @author Ziad Gamalelden
  */
 
 #ifndef STM32F103X6_H_

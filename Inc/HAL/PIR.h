@@ -1,8 +1,8 @@
-/*
- * PIR.h
- *
- *  Created on: Jul 25, 2023
- *      Author: Ziad Gamalelden
+/**
+ * @file PIR.h
+ * @brief PIR (Passive Infrared) Sensor header file.
+ * @date July 25, 2023
+ * @author Ziad Gamalelden
  */
 
 #ifndef HAL_PIR_H_

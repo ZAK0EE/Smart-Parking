@@ -1,9 +1,9 @@
-/*
- * Servo_Motor.h
- *
- *  Created on: Nov 12, 2021
- *  Author: Mostafa Mahmoud Elshiekh
- *  Modified: Ziad Gamalelden
+/**
+ * @file Servo_Motor.h
+ * @brief Servo Motor header file.
+ * @date November 12, 2021
+ * @author Mostafa Mahmoud Elshiekh
+ * @modified Ziad Gamalelden
  */
 
 #ifndef HAL_SERVO_MOTOR_H_

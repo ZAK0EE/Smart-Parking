@@ -19,7 +19,7 @@ s_LCD_Config_t LCD_admin={
 
 };
 
-s_LCD_Config_t LCD_entry={
+s_LCD_Config_t LCD_user={
 		.s_LCDCtrlPins = {GPIOA, GPIO_PIN_5, GPIO_PIN_6},
 		.s_LCDDataPins = {GPIOA, GPIO_PIN_12},
 		.e_EntryMode = NOSHIFT_DECREMENT,

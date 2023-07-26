@@ -1,8 +1,8 @@
-/*
- * Stm32_F103C6_gpio.h
- *
- *  	Created on: Jul 27, 2022
- *      Author: Ziad Gamalelden
+/**
+ * @file Stm32_F103C6_gpio.h
+ * @brief STM32F103C6 GPIO (General Purpose Input/Output) header file.
+ * @date July 27, 2022
+ * @author Ziad Gamalelden
  */
 
 #ifndef STM32_F103C6_GPIO_H_

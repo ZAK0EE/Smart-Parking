@@ -1,8 +1,8 @@
-/*
- * Keypad.h
- *
- *  Created: 22/07/31 05:29:00 PM
- *  Author: Ziad Gamamelden
+/**
+ * @file Keypad.h
+ * @brief Keypad header file.
+ * @date July 31, 2022
+ * @author Ziad Gamaelden
  */
 
 #ifndef HAL_KEYPAD_H_
