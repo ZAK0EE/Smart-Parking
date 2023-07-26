@@ -55,3 +55,19 @@ void SmartParking_init(void)
 
 
 }
+void SmartParking_main(void)
+{
+	while(1)
+	{
+		if(RFID_entry_isavailable())
+		{
+			SmartParking_entry();
+		}
+		else if(RFID_exit_isavailable())
+		{
+			SmartParking_exit();
+
+		}
+	}
+}
+
