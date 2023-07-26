@@ -1,7 +1,6 @@
 // Learn-in-depth
 // Ziad Ashraf
 // Mastering_Embedded System online diploma
-
 #include "MCAL/stm32f103x6.h"
 #include "MCAL/Stm32_F103C6_GPIO.h"
 #include "MCAL/Stm32_F103C6_USART.h"
@@ -11,27 +10,11 @@
 #include "HAL/Servo_Motor.h"
 #include "HAL/PIR.h"
 #include "HAL/Alarm.h"
-void clock_init()
-{
-	// Using internal 8 MHz RC oscillator
-	RCC_GPIOA_CLK_EN();
-	RCC_GPIOB_CLK_EN();
-	RCC_AFIO_CLK_EN();
-	MCAL_Timer2_init();
+
+#include "MCAL/MCAL.h"
+#include "HAL/HAL.h"
 
 
-	LCD_init(&LCD_admin);
-	LCD_init(&LCD_user);
-
-	KPAD_init();
-	Servo1_Entry_Gate_Init();
-	Servo2_Exit_Gate_Init();
-	PIR_init();
-	Alarm_init();
-
-
-
-}
 
 void delay(int a)
 {
@@ -90,8 +73,9 @@ void yfunc(void)
 }
 int main(void)
 {
+	MCAL_init();
+	HAL_init();
 
-	clock_init();
 	USART_Config_t uart_config;
 	uart_config.BaudRate = UART_BaudRate_115200;
 	uart_config.HwFlowCtl = UART_HwFlowCtl_NONE;
