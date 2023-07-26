@@ -5,7 +5,7 @@
  *  Author: Ziad Gamalelden
  */
 
-#include "HAL/Keypad.h"
+#include "HAL/KPAD.h"
 
 uint16_t Col[] = {KPAD_C0, KPAD_C1, KPAD_C2};
 uint16_t Row[] = {KPAD_R0, KPAD_R1, KPAD_R2, KPAD_R3};
