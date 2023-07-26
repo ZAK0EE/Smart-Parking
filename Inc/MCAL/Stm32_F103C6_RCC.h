@@ -1,8 +1,8 @@
-/*
- * Stm32_F103C6_RCC.h
- *
- *  Created on: Aug 20, 2022
- *      Author: Ziad Gamalelden
+/**
+ * @file Stm32_F103C6_RCC.h
+ * @brief STM32F103C6 RCC (Reset and Clock Control) header file.
+ * @date August 20, 2022
+ * @author Ziad Gamalelden
  */
 
 #ifndef INC_STM32_F103C6_RCC_H_

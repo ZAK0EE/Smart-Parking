@@ -1,8 +1,8 @@
-/*
- * Stm32_F103C6_USART.h
- *
- *  Created on: Aug 23, 2022
- *      Author: Ziad Gamalelden
+/**
+ * @file Stm32_F103C6_USART.h
+ * @brief STM32F103C6 USART (Universal Synchronous/Asynchronous Receiver/Transmitter) header file.
+ * @date August 23, 2022
+ * @author Ziad Gamalelden
  */
 
 #ifndef INC_STM32_F103C6_USART_H_

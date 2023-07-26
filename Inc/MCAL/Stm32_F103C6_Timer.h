@@ -1,8 +1,10 @@
-/*
- * Stm32_F103C6_Timer.h
- *
- *  Created on: Jul 24, 2023
- *      Author: Ziad Gamalelden
+/**
+ * @file Stm32_F103C6_Timer.h
+ * @brief STM32F103C6 Timer header file.
+ * @date October 10, 2021
+ * @author Mostafa Elshiekh
+ * @modified July 24, 2023
+ * @modifier Ziad Gamalelden
  */
 
 #ifndef MCAL_STM32_F103C6_TIMER_H_
