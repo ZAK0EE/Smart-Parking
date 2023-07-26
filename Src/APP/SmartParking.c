@@ -148,6 +148,75 @@ static void SmartParking_entry(void)
 	LCD_clearscreen(&LCD_user);
 
 }
+
+/**
+ * @brief Exit process for the Smart Parking system.
+ *
+ *
+ * @note This function is marked as static and should only be called internally within the Smart Parking module.
+ * It is not intended for direct external use.
+ */
+static void SmartParking_exit(void)
+{
+	LCD_clearscreen(&LCD_user);
+	LCD_gotoxy(&LCD_user, 0, 0);
+
+	char string[17];
+	LCD_sendstring(&LCD_user, (const char *)"  *Exit Gate*  ");
+
+	LCD_gotoxy(&LCD_user, 0, 1);
+	sprintf(string, "Free Slots:%d ", FreeSlots);
+	LCD_sendstring(&LCD_user, string);
+
+	uint16_t id = RFID_exit_Read();
+
+	LCD_gotoxy(&LCD_user, 0, 2);
+	sprintf(string, "Entered id:%c", id);
+	LCD_sendstring(&LCD_user, string);
+
+	LCD_gotoxy(&LCD_user, 0, 3);
+	LCD_sendstring(&LCD_user, (const char*)" * Processing * ");
+
+	MCAL_Timer2_dms(200);
+
+	LCD_clearscreen(&LCD_user);
+	LCD_gotoxy(&LCD_user, 0, 1);
+
+	uint8_t isAuthentic = SmartParking_isAuthentic(id);
+	if(isAuthentic == 1 && FreeSlots == 3)
+	{
+		LCD_sendstring(&LCD_user, (const char *)" *Not Entered* ");
+		Alarm_correctID_blink();
+		LCD_clearscreen(&LCD_user);
+		return;
+	}
+	else if(isAuthentic == 0)
+	{
+		LCD_sendstring(&LCD_user, (const char *)"   *Wrong ID*   ");
+		Alarm_wrongID_blink();
+		LCD_clearscreen(&LCD_user);
+		return;
+	}
+
+
+	LCD_sendstring(&LCD_user, (const char *)"  *Correct ID*  ");
+
+	Servo2_Exit_Gate(SERVO_UP);
+	Alarm_correctID_blink();
+	Alarm_correctID_on();
+	MCAL_Timer2_dms(200);
+
+	while(PIR_exit() == PIR_DETECTED);
+	Servo2_Exit_Gate(SERVO_DOWN);
+	Alarm_correctID_blink();
+	Alarm_correctID_off();
+
+	FreeSlots++;
+
+	LCD_clearscreen(&LCD_user);
+
+}
+
 void SmartParking_main(void)
 {
 	while(1)
