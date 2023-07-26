@@ -25,8 +25,8 @@ void PIR_init(void)
 	PinConfig.GPIO_PinNumber= PIR_EXIT_PIN;
 	MCAL_GPIO_Init(GPIOA, &PinConfig);
 
-	MCAL_GPIO_WritePin(PIR_GPIOx, PIR_ENTRY_PIN, GPIO_PIN_SET); //make A0 ground
-	MCAL_GPIO_WritePin(PIR_GPIOx, PIR_EXIT_PIN, GPIO_PIN_SET); //make A11 ground
+	MCAL_GPIO_WritePin(PIR_GPIOx, PIR_ENTRY_PIN, GPIO_PIN_SET);
+	MCAL_GPIO_WritePin(PIR_GPIOx, PIR_EXIT_PIN, GPIO_PIN_SET);
 }
 
 e_PIRStatus_t PIR_entry(void)

@@ -11,7 +11,7 @@
 #include "HAL/Keypad.h"
 #include "HAL/Servo_Motor.h"
 #include "HAL/PIR.h"
-
+#include "HAL/Alarm.h"
 void clock_init()
 {
 	// Using internal 8 MHz RC oscillator
@@ -28,6 +28,7 @@ void clock_init()
 	Servo1_Entry_Gate_Init();
 	Servo2_Exit_Gate_Init();
 	PIR_init();
+	Alarm_init();
 
 
 
@@ -50,14 +51,23 @@ void x(void)
 	if(ch == '1')
 	{
 		Servo1_Entry_Gate(SERVO_UP);
+		Alarm_correctID_blink();
 	}
 	else if(ch == '0')
 	{
 		if(PIR_exit() == PIR_NOT_DETECTED)
 		{
 			Servo1_Entry_Gate(SERVO_DOWN);
+			Alarm_correctID_blink();
+			Alarm_correctID_off();
 
 		}
+	}
+	else
+	{
+		Alarm_wrongID_blink();
+		Alarm_wrongID_off();
+
 	}
 
 	MCAL_UART_SendData(USART1, &ch, enable);
@@ -110,7 +120,6 @@ int main(void)
 	MCAL_UART_GPIO_Set_Pins(USART2);
 
 
-	char x = 0;
 	while(1)
 	{
 
