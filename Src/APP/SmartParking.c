@@ -228,7 +228,6 @@ void SmartParking_main(void)
 		else if(RFID_exit_isavailable())
 		{
 			SmartParking_exit();
-
 		}
 	}
 }
