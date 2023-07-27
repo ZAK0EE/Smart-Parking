@@ -43,7 +43,7 @@ void Alarm_correctID_blink(void)
 	for(blinks = 0; blinks < ALARM_NUM_BLINKS; blinks++)
 	{
 		MCAL_GPIO_TogglePin(ALARM_CORRECID_PORT, ALARM_CORRECID_PIN);
-		MCAL_Timer2_dms(50);
+		MCAL_Timer2_dms(ALARM_BLINK_MS);
 	}
 	MCAL_GPIO_WritePin(ALARM_CORRECID_PORT, ALARM_CORRECID_PIN, GPIO_PIN_SET);
 }
@@ -65,7 +65,7 @@ void Alarm_wrongID_blink(void)
 	for(blinks = 0; blinks < ALARM_NUM_BLINKS; blinks++)
 	{
 		MCAL_GPIO_TogglePin(ALARM_WRONGID_PORT, ALARM_WRONGID_PIN);
-		MCAL_Timer2_dms(50);
+		MCAL_Timer2_dms(ALARM_BLINK_MS);
 	}
 	MCAL_GPIO_WritePin(ALARM_WRONGID_PORT, ALARM_WRONGID_PIN, GPIO_PIN_SET);
 }
