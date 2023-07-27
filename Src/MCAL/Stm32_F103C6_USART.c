@@ -305,6 +305,12 @@ void MCAL_UART_ReceiveData(USART_Typedef* USARTx, uint16_t* pRxBuffer, enum Poll
 	}
 }
 
+uint8_t MCAL_UART_IsDataAvailable(USART_Typedef* USARTx)
+{
+	uint8_t isAvailable = ((USARTx->SR >> 5) & 1);
+	return isAvailable;
+}
+
 
 /* ================================================================
  * @Fn				- MCAL_UART_GPIO_Set_Pins
