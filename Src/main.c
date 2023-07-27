@@ -2,6 +2,8 @@
 // Ziad Ashraf
 // Mastering_Embedded System online diploma
 
+#include "MCAL/MCAL.h"
+#include "HAL/HAL.h"
 #include "APP/SmartParking.h"
 
 int main(void)
