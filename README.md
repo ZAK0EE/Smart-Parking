@@ -1,6 +1,8 @@
 # Smart Parking Project
 
 The Smart Parking project is a simulation of a parking system that incorporates two gates, an entry gate, and an exit gate. The system allows an administrator to input authentic IDs initially. Subsequently, when users utilize the RFID scanner for entry or exit, the system processes the request and permits only authentic IDs. Additionally, the system checks the availability of parking slots before granting entry
+![image](https://github.com/ZAK0EE/Smart-Parking/assets/82421473/34452df8-96b1-4b37-a6c0-9e02263bd306)
+
 
 ## Table of Contents
 - [Features](#features)
